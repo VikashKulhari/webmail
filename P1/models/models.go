@@ -13,9 +13,10 @@ type Model interface {
 	CreateUser(userSignCreds entities.User) error
 	IsExistingUserByEMailID(emailID string) bool
 	SendEmail(emailReq entities.Email) error
+	GetEmailsRecievedByEmailId(emailid string) ([]entities.Email, error)
+	GetEmailsSentByEmailId(emailid string) ([]entities.Email, error)
+	DeleteMail(mailID uint, emailid string) error
 }
-
-// SignUp implements services.Service.
 
 func New(db *gorm.DB) Model {
 	return &model{DB: db}

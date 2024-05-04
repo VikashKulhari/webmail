@@ -8,11 +8,11 @@ import (
 
 func (s *service) SendEmail(emailReq entities.EmailReq) error {
 	var email entities.Email
-
 	if len(emailReq.To) > 0 {
-		email.To = emailReq.To
+
 		isToExists := s.model.IsExistingUserByEMailID(emailReq.To)
 		if isToExists {
+			email.To = emailReq.To
 			email.From = emailReq.From
 			email.Body = emailReq.Body
 			email.Subject = emailReq.Subject

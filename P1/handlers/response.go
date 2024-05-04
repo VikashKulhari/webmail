@@ -13,8 +13,5 @@ func sendResponse(w http.ResponseWriter, statusCode int, payload interface{}) {
 		http.Error(w, "error while  marshal", http.StatusInternalServerError)
 		return
 	}
-	// cleanedResponse := strings.Replace(string(response), "\"", "'", -1)
-	// httplog.LogEntrySetField(ctx,"Response Data", cleanedResponse)
-	//after implementing context logging
 	w.Write(response)
 }
