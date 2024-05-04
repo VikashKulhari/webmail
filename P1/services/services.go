@@ -16,6 +16,8 @@ type Service interface {
 	GetEmailsRecievedById(emailid string) ([]entities.Email, error)
 	GetEmailsSentById(emailid string) ([]entities.Email, error)
 	DeleteMail(mailid uint, emailID string) error
+	MarkImportant(mailid uint, emailID string) error
+	MarkSpam(mailid uint, emailID string) error
 }
 
 func New(model *models.Model) Service {

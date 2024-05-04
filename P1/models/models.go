@@ -16,6 +16,8 @@ type Model interface {
 	GetEmailsRecievedByEmailId(emailid string) ([]entities.Email, error)
 	GetEmailsSentByEmailId(emailid string) ([]entities.Email, error)
 	DeleteMail(mailID uint, emailid string) error
+	MarkImportant(mailID uint, emailid string) error
+	MarkSpam(mailID uint, emailid string) error
 }
 
 func New(db *gorm.DB) Model {
