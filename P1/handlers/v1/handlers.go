@@ -13,6 +13,9 @@ type HandlerV1 interface {
 	SignUp(w http.ResponseWriter, r *http.Request)
 	SignIn(w http.ResponseWriter, r *http.Request)
 	SendMail(w http.ResponseWriter, r *http.Request)
+	GetRecievedMails(w http.ResponseWriter, r *http.Request)
+	GetSentMails(w http.ResponseWriter, r *http.Request)
+	DeleteMail(w http.ResponseWriter, r *http.Request)
 }
 
 func New(s services.Service) HandlerV1 {

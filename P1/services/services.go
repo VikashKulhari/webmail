@@ -9,12 +9,13 @@ type service struct {
 	model models.Model
 }
 
-// SignUp implements Service.
-
 type Service interface {
 	SignUp(entities.User) error
 	SignIn(signinCreds entities.User) (string, error)
-	SendEmail(emailReq entities.EmailReq) error 
+	SendEmail(emailReq entities.EmailReq) error
+	GetEmailsRecievedById(emailid string) ([]entities.Email, error)
+	GetEmailsSentById(emailid string) ([]entities.Email, error)
+	DeleteMail(mailid uint, emailID string) error
 }
 
 func New(model *models.Model) Service {

@@ -18,14 +18,6 @@ func Init() *gorm.DB {
 		panic(err)
 	}
 
-	// err = db.Exec("CREATE DATABASE IF NOT EXISTS yourdbname").Error
-	// if err != nil {
-	// 	log.Fatal("Failed to create database:", err)
-	// }
-	// db, err = gorm.Open(postgres.Open(destination), &gorm.Config{})
-	// if err != nil {
-	// 	panic(err)
-	// }
 	db.AutoMigrate(&entities.User{})
 	db.AutoMigrate(&entities.Email{})
 	fmt.Println("Connected!")

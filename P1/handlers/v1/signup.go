@@ -12,15 +12,13 @@ func (h *handlerV1) SignUp(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, "Invalid SignUp Request", http.StatusBadRequest)
-
 	}
+
 	err = h.Service.SignUp(req)
 	if err != nil {
 		http.Error(w, "Email already registered/ some error", http.StatusBadRequest)
-
 	}
-	// sendResponse(w, http.StatusOK, nil)
+
 	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("Signed Up Successfully"))
-
 }

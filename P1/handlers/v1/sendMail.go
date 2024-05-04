@@ -2,6 +2,7 @@ package v1
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/VikashKulhari/P1/entities"
@@ -14,17 +15,9 @@ func (h *handlerV1) SendMail(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 	}
 	err = h.Service.SendEmail(req)
-	if err != nil {
-		if len(req.To) == 0 {
-			http.Error(w, "no reciepient", http.StatusBadRequest)
-		} else {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	}
+	fmt.Println(err)
+
 	w.WriteHeader(http.StatusCreated)
-	w.Write([]byte("Email Sent Successfully"))
-	// sendResponse(w, http.StatusOK, map[string]interface{}{
-	// 	"messageID": "ok",
-	// 	"messgae":   "Email Sent Successfully",
-	// })
+	w.Write([]byte("Email Sent/Saved Successfully"))
+
 }

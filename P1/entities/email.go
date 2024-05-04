@@ -4,16 +4,16 @@ import "gorm.io/gorm"
 
 type Email struct {
 	gorm.Model
-	From         string    `gorm:"not null" json:"From"`
-	To           string    `gorm:"not null" json:"To"`
-	Subject      string    `gorm:"not null" json:"Subject"`
-	Body         string    `gorm:"not null" json:"Body"`
-	IsSuccess    bool      `gorm:"not null" json:"IsSuccess"`
-	IsDraft      bool      `gorm:"not null" json:"IsDraft"`
-	IsSpam       bool      `gorm:"not null" json:"IsSpam"`
-	IsImportant  bool      `gorm:"not null" json:"IsImportant"`
-	IsDeleted    bool      `gorm:"not null" json:"IsDeleted"`
-	RepliesCount int       `gorm:"not null"`
+	From         string `gorm:"not null" json:"From"`
+	To           string `gorm:"not null" json:"To"`
+	Subject      string `gorm:"not null" json:"Subject"`
+	Body         string `gorm:"not null" json:"Body"`
+	IsSuccess    bool   `gorm:"not null" json:"IsSuccess"`
+	IsDraft      bool   `gorm:"not null" json:"IsDraft"`
+	IsSpam       bool   `gorm:"not null" json:"IsSpam"`
+	IsImportant  bool   `gorm:"not null" json:"IsImportant"`
+	IsDeleted    bool   `gorm:"not null" json:"IsDeleted"`
+	RepliesCount int    `gorm:"not null"`
 	// Thread       []Replies `gorm:"foriegnKey:MailID;onDelete:CASCADE"`
 }
 type Replies struct {
