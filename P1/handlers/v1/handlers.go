@@ -16,6 +16,8 @@ type HandlerV1 interface {
 	GetRecievedMails(w http.ResponseWriter, r *http.Request)
 	GetSentMails(w http.ResponseWriter, r *http.Request)
 	DeleteMail(w http.ResponseWriter, r *http.Request)
+	MarkImp(w http.ResponseWriter, r *http.Request)
+	MarkSpam(w http.ResponseWriter, r *http.Request)
 }
 
 func New(s services.Service) HandlerV1 {
