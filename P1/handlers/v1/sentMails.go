@@ -22,7 +22,7 @@ func (h *handlerV1) GetSentMails(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Email fetched Successfully"))
+	// w.Write([]byte("Email fetched Successfully"))
 	json.NewEncoder(w).Encode(emails)
 
 }

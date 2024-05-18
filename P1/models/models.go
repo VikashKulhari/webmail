@@ -10,7 +10,7 @@ type model struct {
 }
 type Model interface {
 	IsExistingUser(userSignCreds entities.User) (bool, entities.User)
-	CreateUser(userSignCreds entities.User) error
+	CreateUser(userSignCreds *entities.User) error
 	IsExistingUserByEMailID(emailID string) bool
 	SendEmail(emailReq entities.Email) error
 	GetEmailsRecievedByEmailId(emailid string) ([]entities.Email, error)
