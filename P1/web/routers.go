@@ -5,11 +5,23 @@ import (
 
 	"github.com/VikashKulhari/P1/handlers"
 	ijwt "github.com/VikashKulhari/P1/jwt"
+	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
+	"github.com/rs/cors"
 )
 
 func Routers(h *handlers.Handler) http.Handler {
 	router := chi.NewRouter()
+	corsHandler := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:3000"},
+		AllowedMethods:   []string{"GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "content-Type", "Authorization"},
+		AllowCredentials: true,
+		MaxAge:           300,
+	})
+	router.Use(corsHandler.Handler)
+	router.Use(middleware.Logger)
+	router.Use(middleware.Recoverer)
 	//without authentication
 	router.Post("/signin", h.V1.SignIn)
 	router.Post("/signup", h.V1.SignUp)

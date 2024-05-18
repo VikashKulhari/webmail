@@ -18,6 +18,6 @@ func (h *handlerV1) SendMail(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(err)
 
 	w.WriteHeader(http.StatusCreated)
-	w.Write([]byte("Email Sent/Saved Successfully"))
+	w.Write([]byte("Email Sent Successfully"))
 
 }

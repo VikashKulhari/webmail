@@ -34,10 +34,8 @@ func (m *model) IsExistingUserByEMailID(emailID string) bool {
 	return false
 }
 
-func (m *model) CreateUser(userSignCreds entities.User) error {
-	fmt.Println("email: ", userSignCreds.Email)
+func (m *model) CreateUser(userSignCreds *entities.User) error {
 	userSignCreds.CreatedAt = time.Now()
-	fmt.Println("password: ", userSignCreds)
 	if err := m.DB.Create(&userSignCreds).Error; err != nil {
 		return err
 	}
